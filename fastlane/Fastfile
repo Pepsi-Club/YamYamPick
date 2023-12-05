@@ -12,11 +12,11 @@ platform :ios do
   lane :set_keychain do |options|
     create_keychain(
       name: "#{KEYCHAIN_NAME}",
-      password: "#{KEYCHAIN_PASSWORD}",
-      default_keychain: true,
-      unlock: true,
-      timeout: 3600,
-      lock_when_sleeps: true
+      password: "#{KEYCHAIN_PASSWORD}"
+      # default_keychain: true,
+      # unlock: true,
+      # timeout: 3600,
+      # lock_when_sleeps: true
     )
 
     import_certificate(
@@ -36,9 +36,6 @@ platform :ios do
 
   desc "Push to TestFlight"
   lane :tf do |options|
-    get_certificates
-    get_provisioning_profile
-    
     app_store_connect_api_key(
       key_id: ENV['APP_STORE_KEY_ID'],
       issuer_id: ENV['APP_STORE_ISSUER_ID'],
