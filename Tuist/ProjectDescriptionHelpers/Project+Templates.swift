@@ -67,7 +67,6 @@ extension Project {
         entitlements: Path?,
         dependencies: [TargetDependency]
     ) -> Target {
-        Target(name: <#T##String#>, platform: <#T##Platform#>, product: <#T##Product#>, productName: <#T##String?#>, bundleId: <#T##String#>, deploymentTarget: <#T##DeploymentTarget?#>, infoPlist: <#T##InfoPlist?#>, sources: <#T##SourceFilesList?#>, resources: <#T##ResourceFileElements?#>, copyFiles: <#T##[CopyFilesAction]?#>, headers: <#T##Headers?#>, entitlements: <#T##Path?#>, scripts: <#T##[TargetScript]#>, dependencies: <#T##[TargetDependency]#>, settings: <#T##Settings?#>, coreDataModels: <#T##[CoreDataModel]#>, environment: <#T##[String : String]#>, launchArguments: <#T##[LaunchArgument]#>, additionalFiles: <#T##[FileElement]#>, buildRules: <#T##[BuildRule]#>)
         let target: Target = .init(
             name: name,
             platform: .iOS,
