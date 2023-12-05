@@ -19,19 +19,19 @@ platform :ios do
       lock_when_sleeps: true
     )
 
-    import_certificate(
-      certificate_path: "Tuist/Signing/distribution.cer"
-      # keychain_name: "#{KEYCHAIN_NAME}",
-      # keychain_password: "#{KEYCHAIN_PASSWORD}"
-    )
+    # import_certificate(
+    #   certificate_path: "Tuist/Signing/distribution.cer"
+    #   # keychain_name: "#{KEYCHAIN_NAME}",
+    #   # keychain_password: "#{KEYCHAIN_PASSWORD}"
+    # )
 
-    import_certificate(
-      certificate_path: "Tuist/Signing/distribution.p12"
-      # keychain_name: "#{KEYCHAIN_NAME}",
-      # keychain_password: "#{KEYCHAIN_PASSWORD}"
-    )
+    # import_certificate(
+    #   certificate_path: "Tuist/Signing/distribution.p12"
+    #   # keychain_name: "#{KEYCHAIN_NAME}",
+    #   # keychain_password: "#{KEYCHAIN_PASSWORD}"
+    # )
 
-    install_provisioning_profile(path: "Tuist/Signing/#{APP_NAME}.Release.mobileprovision")
+    # install_provisioning_profile(path: "Tuist/Signing/#{APP_NAME}.Release.mobileprovision")
   end
 
   desc "Push to TestFlight"
