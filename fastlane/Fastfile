@@ -14,21 +14,21 @@ platform :ios do
       name: "#{KEYCHAIN_NAME}",
       password: "#{KEYCHAIN_PASSWORD}"
       # default_keychain: true,
-      # unlock: true,
-      # timeout: 3600,
-      # lock_when_sleeps: true
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true
     )
 
     import_certificate(
-      certificate_path: "Tuist/Signing/distribution.cer"
-      # keychain_name: "#{KEYCHAIN_NAME}",
-      # keychain_password: "#{KEYCHAIN_PASSWORD}"
+      certificate_path: "Tuist/Signing/distribution.cer",
+      keychain_name: "#{KEYCHAIN_NAME}",
+      keychain_password: "#{KEYCHAIN_PASSWORD}"
     )
 
     import_certificate(
-      certificate_path: "Tuist/Signing/distribution.p12"
-      # keychain_name: "#{KEYCHAIN_NAME}",
-      # keychain_password: "#{KEYCHAIN_PASSWORD}"
+      certificate_path: "Tuist/Signing/distribution.p12",
+      keychain_name: "#{KEYCHAIN_NAME}",
+      keychain_password: "#{KEYCHAIN_PASSWORD}"
     )
 
     install_provisioning_profile(path: "Tuist/Signing/#{APP_NAME}.Release.mobileprovision")
