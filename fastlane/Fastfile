@@ -13,10 +13,10 @@ platform :ios do
     create_keychain(
       name: "#{KEYCHAIN_NAME}",
       password: "#{KEYCHAIN_PASSWORD}"
-      # default_keychain: true,
-      # unlock: true,
-      # timeout: 3600,
-      # lock_when_sleeps: true
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true
     )
 
     import_certificate(
@@ -52,7 +52,6 @@ platform :ios do
       export_method: "app-store"
     )
 
-    # ✅ 테스트 플라이트 업로드
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end
 end
