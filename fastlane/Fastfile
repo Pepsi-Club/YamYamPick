@@ -12,7 +12,7 @@ platform :ios do
   lane :set_keychain do |options|
     create_keychain(
       name: "#{KEYCHAIN_NAME}",
-      password: "#{KEYCHAIN_PASSWORD}"
+      password: "#{KEYCHAIN_PASSWORD}",
       default_keychain: true,
       unlock: true,
       timeout: 3600,
@@ -36,6 +36,8 @@ platform :ios do
 
   desc "Push to TestFlight"
   lane :tf do |options|
+    match(type: "appstore")
+    
     app_store_connect_api_key(
       key_id: ENV['APP_STORE_KEY_ID'],
       issuer_id: ENV['APP_STORE_ISSUER_ID'],
@@ -45,7 +47,9 @@ platform :ios do
     )
     
     increment_build_number({ build_number: latest_testflight_build_number() + 1 })
-
+    
+    match(type: "appstore")
+    
     build_app(
       workspace: "#{APP_NAME}.xcworkspace",
       scheme: "#{SCHEME}",
