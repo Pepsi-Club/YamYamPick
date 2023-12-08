@@ -31,7 +31,7 @@ platform :ios do
     end
   end
 
-  desc "Push to TestFlight"
+  desc "Local Push to TestFlight"
   lane :tf_local do |options|
     match(
         type: "appstore",
@@ -57,7 +57,7 @@ platform :ios do
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end
 
-  desc "Push to TestFlight"
+  desc "Remote Push to TestFlight"
   lane :tf_remote do |options|
     create_keychain(
       name: ENV["KEYCHAIN_NAME"],
@@ -82,7 +82,8 @@ platform :ios do
         type: "appstore",
         readonly: true,
         app_identifier: BUNDLE_ID,
-        git_url: ENV["MATCH_URL"]
+        git_url: ENV["MATCH_URL"],
+        git_private_key: ENV["GIT_PRIVATE_KEY"]
     )
 
     build_app(

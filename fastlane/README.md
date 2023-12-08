@@ -31,10 +31,18 @@ Download Ignored
 
 Set Project
 
-### ios tf
+### ios tf_local
 
 ```sh
-[bundle exec] fastlane ios tf
+[bundle exec] fastlane ios tf_local
+```
+
+Push to TestFlight
+
+### ios tf_remote
+
+```sh
+[bundle exec] fastlane ios tf_remote
 ```
 
 Push to TestFlight
