@@ -37,7 +37,7 @@ Set Project
 [bundle exec] fastlane ios tf_local
 ```
 
-Push to TestFlight
+Local Push to TestFlight
 
 ### ios tf_remote
 
@@ -45,7 +45,7 @@ Push to TestFlight
 [bundle exec] fastlane ios tf_remote
 ```
 
-Push to TestFlight
+Remote Push to TestFlight
 
 ----
 

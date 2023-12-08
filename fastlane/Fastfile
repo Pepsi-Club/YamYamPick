@@ -64,7 +64,7 @@ platform :ios do
       password: ENV["KEYCHAIN_PASSWORD"],
       timeout: 1800,
       default_keychain: true,
-      unlock: true,
+      # unlock: true,
       lock_when_sleeps: false
     )
 
