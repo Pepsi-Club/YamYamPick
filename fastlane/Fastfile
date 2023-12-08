@@ -77,6 +77,8 @@ platform :ios do
     )
     
     match(
+        keychain_name: ENV["KEYCHAIN_NAME"],
+        keychain_password: ENV["KEYCHAIN_PASSWORD"],
         type: "appstore",
         readonly: true,
         app_identifier: BUNDLE_ID,
