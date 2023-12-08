@@ -15,4 +15,4 @@ download-xcconfigs:
 	$(call download_file, XCConfig, $(token),Release.xcconfig)
 
 download-env:
-	$(call download_file, fastlane, $(token), .env)
+	$(call download_file, fastlane, $(token),.env)
