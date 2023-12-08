@@ -20,7 +20,7 @@ public extension InfoPlist {
 
 public extension [String: InfoPlist.Value] {
     static let additionalInfoPlist: Self = [
-        :
+        "ITSAppUsesNonExemptEncryption": "NO"
     ]
     
     static let baseInfoPlist: Self = [
