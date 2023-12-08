@@ -1,4 +1,4 @@
-# git_url("https://github.com/Pepsi-Club/YamYamPick-Match")
+git_url("git@github.com:Pepsi-Club/YamYamPick-Match.git")
 
 storage_mode("git")
 
