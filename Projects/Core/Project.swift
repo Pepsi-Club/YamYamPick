@@ -4,7 +4,7 @@ import ProjectDescriptionHelpers
 
 let project = Project.makeProject(
     name: "Core",
-    targetKinds: .framework,
+    moduleType: .framework,
     dependencies: [
         .thirdPartyLibs
     ]

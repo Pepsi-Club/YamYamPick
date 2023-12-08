@@ -4,7 +4,7 @@ import ProjectDescriptionHelpers
 
 let project = Project.makeProject(
     name: "Data",
-    targetKinds: .framework,
+    moduleType: .framework,
     dependencies: [
         .domain
     ]

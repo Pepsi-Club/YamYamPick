@@ -3,7 +3,7 @@ import ProjectDescriptionHelpers
 
 let project = Project.makeProject(
     name: "tempFeature",
-    targetKinds: .feature,
+    moduleType: .feature,
     dependencies: [
         .featureDependency
     ]

@@ -4,9 +4,9 @@ import ProjectDescriptionHelpers
 
 let project = Project.makeProject(
     name: .appName,
-    targetKinds: .app,
+    moduleType: .app,
     hasResource: true,
     dependencies: [
         .data,
-        ] + .Feature.allCases.map({ $0.dependency })
+    ] + .Feature.allCases.map({ $0.dependency })
 )

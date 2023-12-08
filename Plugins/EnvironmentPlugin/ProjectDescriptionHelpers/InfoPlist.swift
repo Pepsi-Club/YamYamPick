@@ -8,11 +8,25 @@
 
 import ProjectDescription
 
-extension InfoPlist {
-    public static let current: Self = .extendingDefault(with: [
-        "BundleDisplayName": .appName,
-        "CFBundleShortVersionString": .shortVersion,
-        "CFBundleVersion": .version,
+public extension InfoPlist {
+    static let infoPlist: Self = .extendingDefault(
+        with: .baseInfoPlist.merging(
+            .additionalInfoPlist, uniquingKeysWith: { oldValue, newValue in
+                newValue
+            }
+        )
+    )
+}
+
+public extension [String: InfoPlist.Value] {
+    static let additionalInfoPlist: Self = [
+        :
+    ]
+    
+    static let baseInfoPlist: Self = [
+        "CFBundleDisplayName": .bundleDisplayName,
+        "CFBundleShortVersionString": .bundleShortVersionString,
+        "CFBundleVersion": .bundleVersion,
         "UILaunchStoryboardName": "LaunchScreen",
         "UIApplicationSceneManifest": [
             "UIApplicationSupportsMultipleScenes": false,
@@ -25,5 +39,5 @@ extension InfoPlist {
                 ]
             ]
         ],
-    ])
+    ]
 }

@@ -3,7 +3,7 @@ import ProjectDescriptionHelpers
 
 let project = Project.makeProject(
     name: "FeatureDependency",
-    targetKinds: .framework,
+    moduleType: .framework,
     dependencies: [
         .domain,
         .designSystem
