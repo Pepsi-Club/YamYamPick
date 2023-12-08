@@ -15,7 +15,7 @@ jobs:
         with:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-          remove: false
+          # remove: false
 
       - name: Setup Xcode version
         uses: maxim-lobanov/setup-xcode@v1
