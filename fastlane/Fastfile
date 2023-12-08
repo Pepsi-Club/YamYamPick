@@ -8,6 +8,14 @@ KEYCHAIN_PASSWORD = ENV["KEYCHAIN_PASSWORD"]
 default_platform(:ios)
 
 platform :ios do
+  desc "Download Ignored"
+  lane :getig do |options|
+    Dir.chdir("../") do
+      github_access_token = sh("git config --global user.password")
+      sh("make download-privates token=#{github_access_token}")
+    end
+  end
+
   desc "Set Project"
   lane :setpj do |options|
     Dir.chdir("../") do
