@@ -81,9 +81,7 @@ platform :ios do
         keychain_password: ENV["KEYCHAIN_PASSWORD"],
         type: "appstore",
         readonly: true,
-        app_identifier: BUNDLE_ID,
-        git_url: ENV["MATCH_URL"],
-        git_private_key: ENV["GIT_PRIVATE_KEY"]
+        git_url: ENV["MATCH_URL"]
     )
 
     build_app(
