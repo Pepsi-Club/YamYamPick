@@ -21,7 +21,7 @@ public extension String {
     static var buildVersion: Self {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = .current
-        dateFormatter.dateFormat = "yyyy.MM.dd"
+        dateFormatter.dateFormat = "yyyy.MM.dd.HHmm"
         return dateFormatter.string(from: .init())
     }
 }

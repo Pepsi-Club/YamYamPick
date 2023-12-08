@@ -8,14 +8,20 @@
 import ProjectDescription
 
 public extension Settings {
-    enum XCConfig {
-        static let secrets: Path = .relativeToRoot("XCConfig/Secrets.xcconfig")
-    }
     static let secret: Self = .settings(
         base: .baseSetting.setVersion()
             .setCodeSignManual()
             .setProvisioning(),
-        configurations: .secrets,
+        configurations: [
+            .debug(
+                name: .debug,
+                xcconfig: .relativeToRoot("XCConfig/Debug.xcconfig")
+            ),
+            .release(
+                name: .release,
+                xcconfig: .relativeToRoot("XCConfig/Release.xcconfig")
+            ),
+        ],
         defaultSettings: .recommended
     )
 }
@@ -51,17 +57,4 @@ public extension SettingsDictionary {
             ]
         )
     }
-}
-
-public extension Array<Configuration> {
-    static let secrets: Self = [
-        .debug(
-            name: .debug,
-            xcconfig: .relativeToRoot("XCConfig/Secrets.xcconfig")
-        ),
-        .release(
-            name: .release,
-            xcconfig: .relativeToRoot("XCConfig/Secrets.xcconfig")
-        ),
-    ]
 }

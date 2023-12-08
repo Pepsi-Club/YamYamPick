@@ -15,13 +15,13 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
-### ios set_keychain
+### ios setpj
 
 ```sh
-[bundle exec] fastlane ios set_keychain
+[bundle exec] fastlane ios setpj
 ```
 
-Save To Keychain
+Set Project
 
 ### ios tf
 

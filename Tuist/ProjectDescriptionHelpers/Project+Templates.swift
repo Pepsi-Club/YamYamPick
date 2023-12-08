@@ -102,8 +102,7 @@ extension Project {
             ],
             entitlements: entitlements,
             scripts: [.featureSwiftLint],
-            dependencies: dependencies,
-            settings: .secret
+            dependencies: dependencies
         )
         return target
     }
@@ -121,13 +120,12 @@ extension Project {
             product: .framework,
             bundleId: .bundleID + ".\(name)",
             deploymentTarget: .deploymentTarget,
-            infoPlist: .infoPlist,
+            infoPlist: .default,
             sources: ["Sources/**"],
             resources: hasResource ? ["Resources/**"] : nil,
             entitlements: entitlements,
             scripts: isFeature ? [.featureSwiftLint] : [.swiftLint],
-            dependencies: dependencies,
-            settings: .secret
+            dependencies: dependencies
         )
         return target
     }
@@ -143,7 +141,7 @@ extension Project {
             product: .unitTests,
             bundleId: .bundleID + ".\(name)Test",
             deploymentTarget: .deploymentTarget,
-            infoPlist: .infoPlist,
+            infoPlist: .default,
             sources: ["Tests/**"],
             scripts: isFeature ? [.featureSwiftLint] : [.swiftLint],
             dependencies: dependencies

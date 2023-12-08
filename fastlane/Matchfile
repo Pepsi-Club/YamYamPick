@@ -1,4 +1,4 @@
-git_url("https://github.com/Pepsi-Club/YamYamPick-AppStore")
+git_url("https://github.com/Pepsi-Club/YamYamPick-Match")
 
 storage_mode("git")
 

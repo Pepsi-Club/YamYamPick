@@ -8,35 +8,33 @@ KEYCHAIN_PASSWORD = ENV["KEYCHAIN_PASSWORD"]
 default_platform(:ios)
 
 platform :ios do
-  desc "Save To Keychain"
-  lane :set_keychain do |options|
-    create_keychain(
-      name: "#{KEYCHAIN_NAME}",
-      password: "#{KEYCHAIN_PASSWORD}",
-      default_keychain: true,
-      unlock: true,
-      timeout: 3600,
-      lock_when_sleeps: true
-    )
-
-    import_certificate(
-      certificate_path: "Tuist/Signing/distribution.cer",
-      keychain_name: "#{KEYCHAIN_NAME}",
-      keychain_password: "#{KEYCHAIN_PASSWORD}"
-    )
-
-    import_certificate(
-      certificate_path: "Tuist/Signing/distribution.p12",
-      keychain_name: "#{KEYCHAIN_NAME}",
-      keychain_password: "#{KEYCHAIN_PASSWORD}"
-    )
-
-    install_provisioning_profile(path: "Tuist/Signing/#{APP_NAME}.Release.mobileprovision")
+  desc "Set Project"
+  lane :setpj do |options|
+    Dir.chdir("../") do
+      sh("tuist clean")
+      sh("tuist fetch")
+      sh("tuist generate")
+      match(
+        type: "development",
+        readonly: true,
+        app_identifier: BUNDLE_ID,
+        git_url: ENV["MATCH_URL"]
+      )
+      match(
+        type: "appstore",
+        readonly: true,
+        app_identifier: BUNDLE_ID,
+        git_url: ENV["MATCH_URL"]
+      )
+    end
   end
 
   desc "Push to TestFlight"
   lane :tf do |options|
-    match(type: "appstore")
+    match(
+      type: "appstore",
+      readonly: true
+    )
 
     app_store_connect_api_key(
       key_id: ENV['APP_STORE_KEY_ID'],
@@ -45,8 +43,6 @@ platform :ios do
       is_key_content_base64: true, 
       in_house: false
     )
-    
-    increment_build_number({ build_number: latest_testflight_build_number() + 1 })
     
     build_app(
       workspace: "#{APP_NAME}.xcworkspace",

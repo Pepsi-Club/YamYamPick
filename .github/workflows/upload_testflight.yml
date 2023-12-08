@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - release
-
+      - feat/#1
 jobs:
   upload_testflight:
     runs-on: macos-latest
@@ -20,14 +20,14 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: Pepsi-Club/YamYamPick-ignored
-          path: XCConfig/Secrets.xcconfig
+          path: XCConfig/
           token: ${{ secrets.ACTION_TOKEN }}
 
-      - name: Setting Master Key
-        run: |
-          echo "$MASTER_KEY" > Tuist/master.key
-        env:
-          MASTER_KEY: ${{ secrets.MASTER_KEY }}
+      # - name: Setting Master Key
+      #   run: |
+      #     echo "$MASTER_KEY" > Tuist/master.key
+      #   env:
+      #     MASTER_KEY: ${{ secrets.MASTER_KEY }}
 
       - name: Install Tuist
         run: curl -Ls https://install.tuist.io|bash
@@ -35,14 +35,17 @@ jobs:
       - name: Install Fastlane
         run: brew install fastlane
 
-      - name: Tuist clean
-        run: tuist clean
+      - name: Set Project
+        run: fastlane setpj
 
-      - name: Tuist fetch
-        run: tuist fetch
+      # - name: Tuist clean
+      #   run: tuist clean
 
-      - name: Tuist Signing Decrypt
-        run: tuist signing decrypt
+      # - name: Tuist fetch
+      #   run: tuist fetch
+
+      # - name: Tuist Signing Decrypt
+      #   run: tuist signing decrypt
 
       # - name: Set Keychain
       #   run: fastlane set_keychain
@@ -50,8 +53,8 @@ jobs:
       #     KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
       #     KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
 
-      - name: Tuist generate
-        run: tuist generate
+      # - name: Tuist generate
+      #   run: tuist generate
 
       # - name: Run Tests
       #   run: |
