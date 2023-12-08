@@ -39,7 +39,7 @@ jobs:
         run: tuist generate
 
       - name: Fastlane Upload Testflight
-        run: fastlane tf
+        run: fastlane tf_remote
         env:
           KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
