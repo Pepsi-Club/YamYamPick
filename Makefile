@@ -8,8 +8,7 @@ endef
 
 .PHONY: download-privates
 
-download-privates: download-xcconfigs 
-# download-env
+download-privates: download-xcconfigs download-env
 
 download-xcconfigs:
 	$(call download_file, XCConfig, $(token),Debug.xcconfig)
