@@ -77,13 +77,14 @@ platform :ios do
     )
     
     match(
-        keychain_name: ENV["KEYCHAIN_NAME"],
-        keychain_password: ENV["KEYCHAIN_PASSWORD"],
-        type: "appstore",
-        readonly: true,
-        git_url: ENV["MATCH_URL"]
+      git_url: ENV["MATCH_URL"],
+      storage_mode: "git",
+      type: "appstore",
+      readonly: true,
+      keychain_name: ENV["KEYCHAIN_NAME"],
+      keychain_password: ENV["KEYCHAIN_PASSWORD"],
     )
-
+    
     build_app(
       workspace: "#{APP_NAME}.xcworkspace",
       scheme: "#{SCHEME}",
