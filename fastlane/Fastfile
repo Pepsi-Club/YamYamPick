@@ -28,20 +28,16 @@ platform :ios do
         app_identifier: BUNDLE_ID,
         git_url: ENV["MATCH_URL"]
       )
-      match(
-        type: "appstore",
-        readonly: true,
-        app_identifier: BUNDLE_ID,
-        git_url: ENV["MATCH_URL"]
-      )
     end
   end
 
   desc "Push to TestFlight"
   lane :tf do |options|
     match(
-      type: "appstore",
-      readonly: true
+        type: "appstore",
+        readonly: true,
+        app_identifier: BUNDLE_ID,
+        git_url: ENV["MATCH_URL"]
     )
 
     app_store_connect_api_key(

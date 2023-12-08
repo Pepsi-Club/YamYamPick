@@ -23,49 +23,29 @@ jobs:
           path: XCConfig/
           token: ${{ secrets.ACTION_TOKEN }}
 
-      # - name: Setting Master Key
-      #   run: |
-      #     echo "$MASTER_KEY" > Tuist/master.key
-      #   env:
-      #     MASTER_KEY: ${{ secrets.MASTER_KEY }}
-
       - name: Install Tuist
         run: curl -Ls https://install.tuist.io|bash
 
       - name: Install Fastlane
         run: brew install fastlane
 
-      - name: Set Project
-        run: fastlane setpj
+      - name: Tuist clean
+        run: tuist clean
 
-      # - name: Tuist clean
-      #   run: tuist clean
+      - name: Tuist fetch
+        run: tuist fetch
 
-      # - name: Tuist fetch
-      #   run: tuist fetch
+      - name: Tuist generate
+        run: tuist generate
 
-      # - name: Tuist Signing Decrypt
-      #   run: tuist signing decrypt
-
-      # - name: Set Keychain
-      #   run: fastlane set_keychain
-      #   env:
-      #     KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
-      #     KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
-
-      # - name: Tuist generate
-      #   run: tuist generate
-
-      # - name: Run Tests
-      #   run: |
-      #     xcodebuild clean test -workspace AppStore.xcworkspace -scheme AppStore-Workspace -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=16.2'
       - name: Fastlane Upload Testflight
         run: fastlane tf
         env:
           KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
-          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+          # KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
           # TEAM_ID: ${{ secrets.TEAM_ID }}
-          # MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_URL: ${{ secrets.MATCH_URL }}
           # MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
           APP_STORE_KEY_ID: ${{ secrets.APP_STORE_KEY_ID }}
           APP_STORE_ISSUER_ID: ${{ secrets.APP_STORE_ISSUER_ID }}
