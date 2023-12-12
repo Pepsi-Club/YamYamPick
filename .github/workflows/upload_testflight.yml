@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - release
-      - feat/#1
 jobs:
   upload_testflight:
     runs-on: macos-latest
