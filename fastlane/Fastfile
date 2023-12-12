@@ -2,9 +2,6 @@ APP_NAME = "YamYamPick"
 SCHEME = "YamYamPick"
 BUNDLE_ID = "com.Pepsi-Club.YamYamPick"
 
-KEYCHAIN_NAME = ENV["KEYCHAIN_NAME"]
-KEYCHAIN_PASSWORD = ENV["KEYCHAIN_PASSWORD"]
-
 default_platform(:ios)
 
 platform :ios do
@@ -72,6 +69,7 @@ platform :ios do
       key_id: ENV['APP_STORE_KEY_ID'],
       issuer_id: ENV['APP_STORE_ISSUER_ID'],
       key_content: ENV['APP_STORE_PRIVATE_KEY'],
+      is_key_content_base64: true, 
       in_house: false
     )
       
