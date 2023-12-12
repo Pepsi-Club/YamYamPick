@@ -15,21 +15,37 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
-### ios set_keychain
+### ios getig
 
 ```sh
-[bundle exec] fastlane ios set_keychain
+[bundle exec] fastlane ios getig
 ```
 
-Save To Keychain
+Download Ignored
 
-### ios tf
+### ios setpj
 
 ```sh
-[bundle exec] fastlane ios tf
+[bundle exec] fastlane ios setpj
 ```
 
-Push to TestFlight
+Set Project
+
+### ios tf_local
+
+```sh
+[bundle exec] fastlane ios tf_local
+```
+
+Local Push to TestFlight
+
+### ios tf_remote
+
+```sh
+[bundle exec] fastlane ios tf_remote
+```
+
+Remote Push to TestFlight
 
 ----
 

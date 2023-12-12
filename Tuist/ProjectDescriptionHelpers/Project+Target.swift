@@ -7,7 +7,7 @@
 
 import ProjectDescription
 
-public enum TargetKind {
+public enum ModuleType {
     case app, framework, feature
     
     var product: Product {
@@ -20,8 +20,4 @@ public enum TargetKind {
             return .app
         }
     }
-}
-
-public extension ResourceFileElements {
-    static let resources: Self = ["Resources/**"]
 }

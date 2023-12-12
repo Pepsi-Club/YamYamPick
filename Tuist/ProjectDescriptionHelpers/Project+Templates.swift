@@ -17,7 +17,7 @@ extension Project {
     // MARK: Refact
     public static func makeProject(
         name: String,
-        targetKinds: TargetKind,
+        moduleType: ModuleType,
         entitlements: Path? = nil,
         isTestable: Bool = false,
         hasResource: Bool = false,
@@ -25,7 +25,7 @@ extension Project {
     ) -> Self {
         var targets = [Target]()
         targets = {
-            switch targetKinds {
+            switch moduleType {
             case .app:
                 var result = [Target]()
                 let app = appTarget(name: name, entitlements: entitlements, dependencies: dependencies)
@@ -71,9 +71,9 @@ extension Project {
             name: name,
             platform: .iOS,
             product: .app,
-            bundleId: .bundleIDPrefix,
-            deploymentTarget: .current,
-            infoPlist: .current,
+            bundleId: .bundleID,
+            deploymentTarget: .deploymentTarget,
+            infoPlist: .infoPlist,
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             entitlements: entitlements,
@@ -93,17 +93,16 @@ extension Project {
             name: "\(name)DemoApp",
             platform: .iOS,
             product: .app,
-            bundleId: .bundleIDPrefix + ".\(name)DemoApp",
-            deploymentTarget: .current,
-            infoPlist: .current,
+            bundleId: .bundleID + ".\(name)DemoApp",
+            deploymentTarget: .deploymentTarget,
+            infoPlist: .infoPlist,
             sources: [
                 "Demo/**",
                 "Sources/**"
             ],
             entitlements: entitlements,
             scripts: [.featureSwiftLint],
-            dependencies: dependencies,
-            settings: .secret
+            dependencies: dependencies
         )
         return target
     }
@@ -119,15 +118,14 @@ extension Project {
             name: name,
             platform: .iOS,
             product: .framework,
-            bundleId: .bundleIDPrefix + ".\(name)",
-            deploymentTarget: .current,
-            infoPlist: .current,
+            bundleId: .bundleID + ".\(name)",
+            deploymentTarget: .deploymentTarget,
+            infoPlist: .default,
             sources: ["Sources/**"],
-            resources: hasResource ? .resources : nil,
+            resources: hasResource ? ["Resources/**"] : nil,
             entitlements: entitlements,
             scripts: isFeature ? [.featureSwiftLint] : [.swiftLint],
-            dependencies: dependencies,
-            settings: .secret
+            dependencies: dependencies
         )
         return target
     }
@@ -141,9 +139,9 @@ extension Project {
             name: "\(name)Tests",
             platform: .iOS,
             product: .unitTests,
-            bundleId: .bundleIDPrefix + ".\(name)Test",
-            deploymentTarget: .current,
-            infoPlist: .current,
+            bundleId: .bundleID + ".\(name)Test",
+            deploymentTarget: .deploymentTarget,
+            infoPlist: .default,
             sources: ["Tests/**"],
             scripts: isFeature ? [.featureSwiftLint] : [.swiftLint],
             dependencies: dependencies

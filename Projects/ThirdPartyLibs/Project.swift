@@ -4,7 +4,7 @@ import ProjectDescriptionHelpers
 
 let project = Project.makeProject(
     name: "ThirdPartyLibs",
-    targetKinds: .framework,
+    moduleType: .framework,
     dependencies: [
         .rxSwift,
         .rxCocoa,
