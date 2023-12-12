@@ -33,12 +33,12 @@ platform :ios do
 
   desc "Local Push to TestFlight"
   lane :tf_local do |options|
-    #match(
-        #type: "appstore",
-        #readonly: true,
-        #app_identifier: BUNDLE_ID,
-        #git_url: ENV["MATCH_URL"]
-    #)
+    match(
+        type: "appstore",
+        readonly: true,
+        app_identifier: BUNDLE_ID,
+        git_url: ENV["MATCH_URL"]
+    )
 
     app_store_connect_api_key(
       key_id: ENV['APP_STORE_KEY_ID'],
@@ -75,21 +75,21 @@ platform :ios do
       is_key_content_base64: true, 
       in_house: false
     )
-    sync_code_signing(
-      type: "appstore",
-      app_identifier: BUNDLE_ID,
-      force_for_new_devices: true,
-      readonly: true
-    )
+    # sync_code_signing(
+    #   type: "appstore",
+    #   app_identifier: BUNDLE_ID,
+    #   force_for_new_devices: true,
+    #   readonly: true
+    # )
       
-    #match(
-      #git_url: ENV["MATCH_URL"],
-      #storage_mode: "git",
-      #type: "appstore",
-      #readonly: true,
-      #keychain_name: ENV["KEYCHAIN_NAME"],
-      #keychain_password: ENV["KEYCHAIN_PASSWORD"],
-    #)
+    match(
+      git_url: ENV["MATCH_URL"],
+      storage_mode: "git",
+      type: "appstore",
+      readonly: true,
+      keychain_name: ENV["KEYCHAIN_NAME"],
+      keychain_password: ENV["KEYCHAIN_PASSWORD"],
+    )
     
     build_app(
       workspace: "#{APP_NAME}.xcworkspace",
