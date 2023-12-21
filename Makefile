@@ -1,3 +1,27 @@
+generate:
+	tuist fetch
+	tuist generate
+
+clean:
+	rm -rf **/**/**/*.xcodeproj
+	rm -rf **/**/*.xcodeproj
+	rm -rf **/*.xcodeproj
+	rm -rf *.xcworkspace
+
+reset:
+	tuist clean
+	rm -rf **/**/**/*.xcodeproj
+	rm -rf **/**/*.xcodeproj
+	rm -rf **/*.xcodeproj
+	rm -rf *.xcworkspace
+
+regenerate:
+	rm -rf **/**/**/*.xcodeproj
+	rm -rf **/**/*.xcodeproj
+	rm -rf **/*.xcodeproj
+	rm -rf *.xcworkspace
+	tuist generate
+
 BASE_URL = https://raw.githubusercontent.com/Pepsi-Club/YamYamPick-ignored/main
 
 define download_file

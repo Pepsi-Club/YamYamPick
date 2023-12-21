@@ -9,10 +9,6 @@ import ProjectDescription
 import EnvironmentPlugin
 import DependencyPlugin
 
-import ProjectDescription
-import EnvironmentPlugin
-import DependencyPlugin
-
 extension Project {
     // MARK: Refact
     public static func makeProject(

@@ -7,12 +7,11 @@ assignees: ''
 
 ---
 
-## Description
+## 설명
 설명을 작성하세요.
 
-## Todo
-[] todo
-[] todo
+## 목표
+- [ ] todo
 
-## ETC
+## 기타
 기타사항
